@@ -1,0 +1,27 @@
+{
+  "name": "battleship-tp",
+  "version": "1.0.0",
+  "description": "This is migrating Rust code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/johnjayasingh/battleship-tp-js.git"
+  },
+  "keywords": [
+    "sawtooth",
+    "hyperledger",
+    "battleship"
+  ],
+  "author": "John Jayasingh S",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnjayasingh/battleship-tp-js/issues"
+  },
+  "homepage": "https://github.com/johnjayasingh/battleship-tp-js#readme",
+  "dependencies": {
+    "sawtooth-sdk": "^1.0.5"
+  }
+}
