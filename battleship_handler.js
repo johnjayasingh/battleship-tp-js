@@ -12,7 +12,7 @@ class BattleShipTransactionHandler extends TransactionHandler {
 
     apply(transaction, context) {
         return new Promise((resolve, reject) => {
-
+            console.log(transaction)
         })
     }
 
