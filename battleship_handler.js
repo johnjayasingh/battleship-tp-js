@@ -25,18 +25,9 @@ class Handler extends TransactionHandler {
     }
 
     apply(transactionProcessRequest, context) {
-        return utils.decodeCbor(transactionProcessRequest.payload)
-            .then((payload) => {
-                console.error(payload)
-                return performTransaction(transactionProcessRequest, context, payload)
-                    .then(addresses => {
-                        if (addresses.length === 0) {
-                            throw new InternalError('State Error!')
-                        }
-                        console.log(`Action Received ${JSON.stringify(payload)}`)
-                    })
-                    .catch(utils.toInvalidTransaction);
-            })
+        const address = `${TP_NAMESPACE}${_hash('sampleKey', 64)}`;
+
+        return utils.setEntry(context, address, 'stateValue')
             .catch(utils.toInvalidTransaction);
     }
 }
