@@ -1,12 +1,6 @@
 const {
     TransactionHandler
 } = require('sawtooth-sdk/processor/handler');
-const {
-    InvalidTransaction,
-    InternalError
-} = require('sawtooth-sdk/processor/exceptions')
-const env = require('./env');
-const { performTransaction } = require('./action');
 const utils = require('./action/utils');
 
 const {
