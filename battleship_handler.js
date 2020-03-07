@@ -1,7 +1,9 @@
 const {
     TransactionHandler
 } = require('sawtooth-sdk/processor/handler');
-const utils = require('./action/utils');
+const {
+    InvalidTransaction,
+} = require('sawtooth-sdk/processor/exceptions')
 
 const {
     createHash
@@ -18,11 +20,17 @@ class Handler extends TransactionHandler {
         super(TP_FAMILY, [TP_VERSION], [TP_NAMESPACE])
     }
 
-    apply(transactionProcessRequest, context) {
+    apply(transaction, context) {
         const address = `${TP_NAMESPACE}${_hash('sampleKey', 64)}`;
 
-        return utils.setEntry(context, address, 'stateValue')
-            .catch(utils.toInvalidTransaction);
+        let entries = {
+            [address]: Buffer.from(new String(JSON.stringify('somevalue')))
+        }
+        return context.setState(entries)
+            .catch(error => {
+                let message = (error.message) ? error.message : error
+                throw new InvalidTransaction(message)
+            });
     }
 }
 
