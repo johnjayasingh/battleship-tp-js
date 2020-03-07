@@ -36,11 +36,6 @@ app.get('/test', async (req, res) => {
 
     let address = TP_NAMESPACE + _hash('sampleKey').substr(0, 64)
 
-    console.log({
-        TP_NAMESPACE,
-        address
-    })
-
     const payload = {
         Name: 'Does not matter as we have not implemented any check'
     }
@@ -108,6 +103,7 @@ app.get('/test', async (req, res) => {
             data: response.data
         });
     }).catch(error => {
+        console.error(error)
         res.send({
             message: 'submitted',
             error: error.response.data
