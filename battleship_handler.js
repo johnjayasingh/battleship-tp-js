@@ -8,6 +8,10 @@ const TP_FAMILY = 'battleship';
 const TP_NAMESPACE = _hash(TP_FAMILY).substr(0, 6);
 const TP_VERSION = '1.1';
 
+let address = TP_NAMESPACE + _hash('sampleKey').substr(0, 64)
+
+console.log({ address })
+
 class BattleShipTransactionHandler extends TransactionHandler {
     constructor() {
         super(TP_FAMILY, [TP_VERSION], [TP_NAMESPACE])
@@ -20,14 +24,9 @@ class BattleShipTransactionHandler extends TransactionHandler {
      */
     apply(transaction, context) {
         return new Promise(async (resolve, reject) => {
-            let address = TP_NAMESPACE + _hash('sampleKey').substr(0, 64)
-
-            let previousValue = await context.getState([address]);
-
-
 
             let entries = {
-                [address]: JSON.stringify('1')
+                [address]: Buffer.from('1')
             }
             return context.setState(entries)
             // never throw InternalError as this code will run forever and attempt to commit the changes forever too
