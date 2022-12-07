@@ -24,9 +24,9 @@
   "homepage": "https://github.com/johnjayasingh/battleship-tp-js#readme",
   "dependencies": {
     "axios": "^0.19.2",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "cbor": "^5.0.1",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "sawtooth-sdk": "latest"
   },
   "devDependencies": {
